@@ -37,7 +37,6 @@ julia> foo([1, 2], [1])
 Once assertions are turned off, any function depending on them is recompiled with the assertions removed. For instance, the LLVM code for `foo` now simply returns `1` without any bounds checking at runtime:
 ```julia
 julia> @code_llvm foo([1,2], [1])
-
 ;  @ REPL[1]:2 within `foo'
 define i64 @julia_foo_16854(%jl_value_t addrspace(10)* nonnull align 16 dereferenceable(40), %jl_value_t addrspace(10)* nonnull align 16 dereferenceable(40)) {
 top:
