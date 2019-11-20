@@ -12,6 +12,6 @@ end
 
 @test foo([1, 2], [1]) == 1
 
-@sync for i in 1:20
-    Threads.@spawn @toggle rand(Bool)
+Threads.@threads for i in 1:20
+    @toggle rand(Bool)
 end
