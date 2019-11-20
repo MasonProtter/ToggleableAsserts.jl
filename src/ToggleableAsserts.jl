@@ -14,11 +14,12 @@ end
 const toggle_lock = ReentrantLock()
 
 macro toggle(bool)
+    bool ∈ [:true, :false] || error("Toggle only takes true or false literals.")
     quote
         lock(toggle_lock) do
-            bool = $bool::Bool
-            @eval ToggleableAsserts assert_toggle() = bool
-            on_or_off = bool ? "on." : "off."
+            @assert $bool isa Bool
+            @eval ToggleableAsserts assert_toggle() = $bool
+            on_or_off = $bool ? "on." : "off."
             @info "Toggleable asserts turned "*on_or_off
         end
     end

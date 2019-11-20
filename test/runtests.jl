@@ -13,5 +13,5 @@ end
 @test foo([1, 2], [1]) == 1
 
 Threads.@threads for i in 1:20
-    @toggle rand(Bool)
+    rand(Bool) ? @toggle(true) : @toggle(false)
 end
