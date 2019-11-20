@@ -1,6 +1,10 @@
-# ToggleableAsserts
+To install simply do
+```julia
+using Pkg; pkg"add https://github.com/MasonProtter/ToggleableAsserts.jl.git"
+```
+at the julia prompt.
 
-Assertions that can be turned on or off with a switch, with no runtime penalty when they're off!
+# ToggleableAsserts
 
 Suppose we have a function with an assertion we only want to be on while debugging:
 ```julia
