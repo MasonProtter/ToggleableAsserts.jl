@@ -16,9 +16,9 @@ const toggle_lock = ReentrantLock()
 macro toggle(bool)
     quote
         lock(toggle_lock) do
-            @assert $bool isa Bool
-            @eval ToggleableAsserts assert_toggle() = $bool
-            on_or_off = $bool ? "on." : "off."
+            bool = $bool::Bool
+            @eval ToggleableAsserts assert_toggle() = bool
+            on_or_off = bool ? "on." : "off."
             @info "Toggleable asserts turned "*on_or_off
         end
     end
