@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/MasonProtter/ToggleableAsserts.jl.svg?branch=master)](https://travis-ci.com/MasonProtter/ToggleableAsserts.jl)
+
 To install simply do
 ```julia
 using Pkg; pkg"add https://github.com/MasonProtter/ToggleableAsserts.jl.git"
