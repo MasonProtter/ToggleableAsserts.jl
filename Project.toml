@@ -1,0 +1,4 @@
+name = "ToggleableAsserts"
+uuid = "07ecc579-1b30-493c-b961-3180daf6e3ae"
+authors = ["MasonProtter <mason.protter@gmail.com>"]
+version = "0.1.0"
