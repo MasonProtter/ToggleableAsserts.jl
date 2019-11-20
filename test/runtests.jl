@@ -11,3 +11,7 @@ end
 @toggle false # toggle off assertions
 
 @test foo([1, 2], [1]) == 1
+
+@sync for i in 1:20
+    Threads.@spawn @toggle rand(Bool)
+end
