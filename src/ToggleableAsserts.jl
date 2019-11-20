@@ -2,8 +2,12 @@ module ToggleableAsserts
 
 assert_toggle() = true
 
-macro toggled_assert(cond)
-    assert_stmt = esc(:(@assert $cond))
+macro toggled_assert(cond, text=nothing)
+    if text==nothing
+        assert_stmt = esc(:(@assert $cond))
+    else
+        assert_stmt = esc(:(@assert $cond $text))
+    end
     :(assert_toggle() ? $assert_stmt  : nothing)
 end
 

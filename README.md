@@ -44,3 +44,15 @@ top:
 }
 
 ```
+
+
+________
+
+Just like the standard `@assert` macro, you can add custom error text to a `@toggled_assert`:
+
+```julia
+julia> @toggled_assert iseven(3) "3 is an odd number!"
+ERROR: AssertionError: 3 is an odd number!
+Stacktrace:
+ [1] top-level scope at REPL[21]:1
+```
