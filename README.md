@@ -58,7 +58,7 @@ Stacktrace:
 ```
 
 ### Safety
-If you try to set `@toggle` outside of the global scope, you may sufferworld-age issues until you return to the global scope. e.g.
+If you try to set `@toggle` outside of the global scope, you may suffer world-age issues until you return to the global scope. e.g.
 ```julia
 julia> function bar()
            @toggle false
