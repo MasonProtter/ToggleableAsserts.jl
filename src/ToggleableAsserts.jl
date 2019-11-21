@@ -1,5 +1,7 @@
 module ToggleableAsserts
 
+export @toggled_assert, toggle
+
 assert_toggle() = true
 
 macro toggled_assert(cond, text=nothing)
@@ -13,18 +15,13 @@ end
 
 const toggle_lock = ReentrantLock()
 
-macro toggle(bool)
-    bool ∈ [:true, :false] || error("Toggle only takes true or false literals.")
-    quote
-        lock(toggle_lock) do
-            @assert $bool isa Bool
-            @eval ToggleableAsserts assert_toggle() = $bool
-            on_or_off = $bool ? "on." : "off."
-            @info "Toggleable asserts turned "*on_or_off
-        end
+
+function toggle(enable::Bool)
+    lock(toggle_lock) do
+        @eval ToggleableAsserts assert_toggle() = $enable
+        on_or_off = enable ? "on." : "off."
+        @info "Toggleable asserts turned "*on_or_off
     end
 end
-
-export @toggled_assert, @toggle
 
 end # module

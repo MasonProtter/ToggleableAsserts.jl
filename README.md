@@ -28,7 +28,7 @@ Stacktrace:
 ```
 and also turn them off
 ```julia
-julia> @toggle false
+julia> toggle(false)
 [ Info: Toggleable asserts turned off.
 
 julia> foo([1, 2], [1])
@@ -58,12 +58,12 @@ Stacktrace:
 ```
 
 ### Safety
-If you try to set `@toggle` outside of the global scope, you may suffer world-age issues until you return to the global scope. e.g.
+If you try to set `toggle` outside of the global scope, you may suffer world-age issues until you return to the global scope. e.g.
 ```julia
 julia> function bar()
-           @toggle false
+           toggle(false)
            foo([1, 2], [1])
-           @toggle true
+           toggle(true)
            foo([1, 2], [1])    
        end
 bar (generic function with 1 method)
@@ -79,4 +79,4 @@ Stacktrace:
  [1] foo(::Array{Int64,1}, ::Array{Int64,1}) at ./REPL[45]:2
  [2] top-level scope at REPL[48]:1
 ```
-Hence, it should be preferred to only use `@toggle` in the global scope.
+Hence, it should be preferred to only use `toggle` in the global scope.
