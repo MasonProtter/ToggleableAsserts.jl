@@ -56,3 +56,27 @@ ERROR: AssertionError: 3 is an odd number!
 Stacktrace:
  [1] top-level scope at REPL[21]:1
 ```
+
+### Safety
+If you try to set `@toggle` outside of the global scope, you may sufferworld-age issues until you return to the global scope. e.g.
+```julia
+julia> function bar()
+           @toggle false
+           foo([1, 2], [1])
+           @toggle true
+           foo([1, 2], [1])    
+       end
+bar (generic function with 1 method)
+
+julia> bar()
+[ Info: Toggleable asserts turned off.
+[ Info: Toggleable asserts turned on.
+1
+
+julia> foo([1, 2], [1])
+ERROR: AssertionError: length(u) == length(v)
+Stacktrace:
+ [1] foo(::Array{Int64,1}, ::Array{Int64,1}) at ./REPL[45]:2
+ [2] top-level scope at REPL[48]:1
+```
+Hence, it should be preferred to only use `@toggle` in the global scope.
