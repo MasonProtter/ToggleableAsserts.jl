@@ -2,7 +2,9 @@
 
 To install, simply do
 ```julia
-using Pkg; pkg"add https://github.com/MasonProtter/ToggleableAsserts.jl.git"
+julia> ]
+
+(v1.x) pkg> add ToggleableAsserts
 ```
 at the julia prompt.
 
