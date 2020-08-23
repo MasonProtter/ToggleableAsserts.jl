@@ -82,3 +82,7 @@ Stacktrace:
  [2] top-level scope at REPL[48]:1
 ```
 Hence, it should be preferred to only use `toggle` in the global scope.
+
+### Attribution
+
+This isn't my idea, I just packaged it up. The idea came from [this Julia Discourse thread](https://discourse.julialang.org/t/assert-alternatives/24775/14)
